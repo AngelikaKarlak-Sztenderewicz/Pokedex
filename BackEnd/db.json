@@ -1,4 +1,11 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "1757537430520",
+      "username": "Aaa",
+      "email": "aaa@aa.aa",
+      "password": "!Qwerty1"
+    }
+  ],
   "userPokemons": []
 }
