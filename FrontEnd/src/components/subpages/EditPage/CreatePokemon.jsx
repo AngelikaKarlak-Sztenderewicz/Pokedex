@@ -125,7 +125,7 @@ const CreatePokemon = () => {
       </div>
       <span>{errors.height && <p>{errors.height.message}</p>}</span>
       <div>
-        <label>Base experience:</label>
+        <label>Experience:</label>
         <input type="number" {...register("base_experience")} />
       </div>
       <span>

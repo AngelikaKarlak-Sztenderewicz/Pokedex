@@ -7,6 +7,10 @@ const PageWrapper = styled.div`
   color: ${({ theme }) => theme.text};
   min-height: 100vh;
   padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 function App() {

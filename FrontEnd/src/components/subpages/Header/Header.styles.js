@@ -1,32 +1,58 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   background-color: ${({ theme }) => theme.headerBackground};
+  background-color: ${({ theme }) => theme.headerBackground};
   color: ${({ theme }) => theme.text};
   justify-content: space-between;
   display: flex;
   align-items: center;
+  padding: 10px 20px;
+  min-width: 280px;
 
   > div {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin: 10px;
+    padding: 10px;
+    width: 80%;
   }
 
   span {
-        color: #ffffff;
+    color: #ffffff;
     align-items: center;
     display: flex;
-    gap: 5px;  
-align-self: end;
-}
+    gap: 5px;
+    align-self: end;
   }
-  .user-area {
-    display: flex;
+
+  button {
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    > div {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    span {
+      align-self: end;
+    }
+  }
+`;
+
+export const UserArea = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: flex-end;
+  width: ${({ $isLoggedIn }) => ($isLoggedIn ? "100%" : "50%")};
+  align-self: end;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 35px;
   }
 `;
 
@@ -80,13 +106,18 @@ export const Switch = styled.label`
 `;
 
 export const Img = styled.img`
-  width: 250px;
+  width: 20%;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const Form = styled.form`
-  margin: 50px;
+  margin: 50px 0;
   background-color: ${({ theme }) => theme.form};
-  width: 40%;
+  width: 60%;
   justify-self: center;
   border-radius: 12px;
   padding: 30px;
@@ -100,7 +131,7 @@ export const Form = styled.form`
   }
 
   label {
-    width: 155px;
+    width: 100px;
     display: inline-block;
     font-size: 20px;
     text-align: end;
@@ -122,5 +153,20 @@ export const Form = styled.form`
 
   button {
     margin-top: 20px;
+    width: 155px;
+
+    @media (max-width: 1000px) {
+      width: 80px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    input {
+      width: 90px;
+    }
+
+    > div {
+      justify-content: space-between;
+    }
   }
 `;

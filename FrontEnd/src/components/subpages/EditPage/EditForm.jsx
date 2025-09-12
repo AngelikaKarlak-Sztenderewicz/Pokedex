@@ -41,7 +41,7 @@ const EditForm = () => {
 
   const onSubmit = async (data) => {
     const currentPokemon = userPokemon || p;
-    
+
     const updatedPokemon = {
       ...currentPokemon,
       userId: user.id,
@@ -77,7 +77,7 @@ const EditForm = () => {
       </div>
       {errors.height && <p>Height must be greater than 0</p>}
       <div>
-        <label>Base experience:</label>
+        <label>Experience:</label>
         <input
           type="number"
           {...register("base_experience", { valueAsNumber: true })}

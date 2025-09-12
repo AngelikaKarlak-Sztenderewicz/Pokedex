@@ -12,6 +12,7 @@ export const PokemonCard = styled.div`
   text-align: center;
   transition: transform 0.2s, box-shadow 0.3s;
   height: 400px;
+  min-width: 245px;
 
   &:hover {
     transform: scale(1.05);

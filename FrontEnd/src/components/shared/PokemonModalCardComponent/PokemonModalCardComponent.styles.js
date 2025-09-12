@@ -56,6 +56,18 @@ export const ModalCard = styled.div`
     width: auto;
     object-fit: contain;
   }
+
+  @media (max-width: 768px) {
+    height: 80%;
+    width: 60%;
+    min-width: 300px;
+    flex-direction: column;
+    padding: 20px 0;
+
+    img {
+      height: 50%;
+    }
+  }
 `;
 
 export const ModalContent = styled.div`

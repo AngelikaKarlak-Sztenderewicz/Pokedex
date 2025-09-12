@@ -32,6 +32,7 @@ const PokemonModalCardComponent = ({
     <ModalContent>
       <span>
         <h2>{p.name}</h2>
+        
         {isLoggedIn && (
           <Icons>
             <span>{`Arena: ${arenaCount}/2`}</span>

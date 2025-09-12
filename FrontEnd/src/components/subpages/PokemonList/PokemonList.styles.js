@@ -49,6 +49,7 @@ export const ButtonDiv = styled.div`
 
   button {
     margin-top: 20px;
+    width: 155px;
   }
 `;
 

@@ -28,14 +28,35 @@ const RequireAuth = ({ children }) => {
   return children;
 };
 
+const PublicOnly = ({ children }) => {
+  const { isLoggedIn } = useContext(LoginContext);
+  if (isLoggedIn) return <Navigate to="/" replace />;
+  return children;
+};
+
 const router = createBrowserRouter([
   {
     element: <App />,
     path: "/",
     children: [
       { element: <PokemonList />, index: true },
-      { element: <LoginForm />, path: "login" },
-      { element: <Registration />, path: "registration" },
+      {
+        element: (
+          <PublicOnly>
+            <LoginForm />
+          </PublicOnly>
+        ),
+        path: "login",
+      },
+      {
+        element: (
+          <PublicOnly>
+            <Registration />
+          </PublicOnly>
+        ),
+        path: "registration",
+      },
+
       {
         element: (
           <RequireAuth>

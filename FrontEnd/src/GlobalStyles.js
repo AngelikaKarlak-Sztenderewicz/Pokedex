@@ -17,10 +17,14 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
+  max-width: 1600px;
+  justify-self: center;
+  min-width: 320px; 
+  margin: 0 auto; 
+  
 }
 
 button {

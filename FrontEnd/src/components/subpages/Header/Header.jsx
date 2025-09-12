@@ -1,6 +1,6 @@
 import PokemonLogo from "../../../icons/PokemonLogo.png";
 import Button from "../../shared/Button/Button";
-import { Img, Container, Switch } from "./Header.styles";
+import { Img, Container, Switch, UserArea } from "./Header.styles";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { LoginContext } from "../../../context/LoginContext";
@@ -27,7 +27,7 @@ const Header = () => {
             <span />
           </Switch>
         </span>
-        <div className="user-area">
+        <UserArea $isLoggedIn={isLoggedIn}>
           {isLoggedIn && (
             <>
               <Button onClick={() => navigate("/favorite")}>Favorite</Button>
@@ -57,7 +57,7 @@ const Header = () => {
               </Button>
             </>
           )}
-        </div>
+        </UserArea>
       </div>
     </Container>
   );

@@ -52,14 +52,17 @@ const Ranking = () => {
         <ul>
           {sortedPokemons.map((p, index) => (
             <li key={p.id || index}>
-              <img
-                src={
-                  p.sprite ||
-                  p.sprites?.other["official-artwork"]?.front_default
-                }
-                alt={p.name}
-              />
-              {index + 1}. {p.name}
+              <div>
+                <img
+                  src={
+                    p.sprite ||
+                    p.sprites?.other["official-artwork"]?.front_default
+                  }
+                  alt={p.name}
+                />
+                {index + 1}. {p.name}
+              </div>
+
               <div>
                 Height: {p.height}, Weight: {p.weight}, Experience:
                 {p.base_experience}, Fight won: {p.win || 0}

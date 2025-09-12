@@ -6,9 +6,11 @@ export const EditPageWrapper = styled.div`
   justify-self: center;
   border-radius: 12px;
   padding: 30px;
+  min-width: 250px;
 
   ul {
     list-style: none;
+    padding: 0;
   }
 
   li {
@@ -44,4 +46,8 @@ export const Img = styled.img`
   opacity: ${({ $used }) => ($used ? 0.5 : 1)};
   transition: 0.3s;
   cursor: ${({ $used }) => ($used ? "not-allowed" : "pointer")};
+
+  @media (max-width: 768px) {
+    width: ${({ $active }) => ($active ? "60px" : "40px")};
+  }
 `;

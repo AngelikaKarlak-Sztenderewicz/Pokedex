@@ -1,8 +1,11 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Button from "../../shared/Button/Button";
 import { Img, CarouselWrapper } from "./Edition.styles";
+import useWindowWidth from "./../../../hooks/useWindowWidth";
 
 const Carousel = ({ sprites, userPokemons, current, setCurrentSprite }) => {
+  const width = useWindowWidth();
+
   const prevSprite = () => {
     setCurrentSprite((prev) => (prev === 0 ? sprites.length - 1 : prev - 1));
   };
@@ -11,11 +14,14 @@ const Carousel = ({ sprites, userPokemons, current, setCurrentSprite }) => {
     setCurrentSprite((prev) => (prev + 1) % sprites.length);
   };
 
-  const indicies = [
-    (current - 1 + sprites.length) % sprites.length,
-    current,
-    (current + 1) % sprites.length,
-  ];
+  const indicies =
+    width > 1000
+      ? [
+          (current - 1 + sprites.length) % sprites.length,
+          current,
+          (current + 1) % sprites.length,
+        ]
+      : [current];
 
   return (
     <CarouselWrapper>

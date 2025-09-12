@@ -7,7 +7,6 @@ export const ButtonStyle = styled.button`
   padding: 8px 16px;
   border-radius: 8px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-  width: 155px;
   height: 40px;
   transition: background-color 0.3s;
 
