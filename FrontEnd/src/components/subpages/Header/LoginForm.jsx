@@ -1,31 +1,38 @@
 import { LoginContext } from "../../../context/LoginContext";
 import Button from "../../shared/Button/Button";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Form } from "./Header.styles";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+export const loginSchema = z.object({
+  username: z.string().min(3, "Username is required"),
+  password: z.string().min(8, "Password is required"),
+});
 
 const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const { login } = useContext(LoginContext);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+  });
 
-    if (!username || !password) {
-      enqueueSnackbar("Enter username and password", { variant: "warning" });
-      return;
-    }
-
+  const onSubmit = async (data) => {
     try {
       const response = await fetch("http://localhost:5174/users");
-      const data = await response.json();
+      const users = await response.json();
 
-      const foundUser = data.find(
-        (u) => u.username === username && u.password === password
+      const foundUser = users.find(
+        (u) => u.username === data.username && u.password === data.password
       );
 
       if (foundUser) {
@@ -41,24 +48,20 @@ const LoginForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label>Username: </label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
+        <input type="text" {...register("username")} />
       </div>
+      <span>{errors.username && <p>{errors.username.message}</p>}</span>
       <div>
         <label>Password: </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <input type="password" {...register("password")} />
       </div>
-      <Button type="submit">Login</Button>
+      <span>{errors.password && <p>{errors.password.message}</p>}</span>
+      <Button type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Logging in..." : "Login"}
+      </Button>
     </Form>
   );
 };

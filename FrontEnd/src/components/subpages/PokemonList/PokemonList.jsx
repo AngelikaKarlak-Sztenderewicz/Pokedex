@@ -94,6 +94,7 @@ const PokemonList = () => {
         <ButtonDiv>
           <Button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+            disabled={currentPage === 1}
           >
             Previous
           </Button>
