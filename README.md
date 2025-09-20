@@ -21,7 +21,7 @@ npm install
 
 **BackEnd**
 
-npx json-server --watch db.json
+json-server --watch db.json --port 5174
 
 **FrontEnd**
 
